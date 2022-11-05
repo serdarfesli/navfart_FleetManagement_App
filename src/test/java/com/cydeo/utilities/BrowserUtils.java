@@ -14,4 +14,12 @@ public class BrowserUtils {
         WebDriverWait wait= new WebDriverWait(Driver.getDriver(),15);
         wait.until(ExpectedConditions.invisibilityOf(webElement));
     }
+
+    public static void sleep(int seconds){
+        try {
+            Thread.sleep(seconds*1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }

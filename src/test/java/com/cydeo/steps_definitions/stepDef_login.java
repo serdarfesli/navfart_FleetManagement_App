@@ -21,7 +21,7 @@ public class stepDef_login {
    Navfart_ForgotPasswordPage navfart_forgotPasswordPage= new Navfart_ForgotPasswordPage();
 
 
-   @Given("user navigates to the login page")
+   @Given("user is on the login page")
    public void user_is_already_on_the_login_page() {
       Driver.getDriver().get(ConfigurationReader.getProperty("loginPageUrl"));
    }
@@ -40,6 +40,7 @@ public class stepDef_login {
 
    @Then("user lands on {string}")
    public void user_lands_on(String header) {
+      BrowserUtils.waitUntilInvisibiltyOf(navfart_homePage.loadingBar);
       String expectedHeader=header;
       String actualHeader=navfart_homePage.pageHeader.getText();
       Assert.assertEquals(expectedHeader,actualHeader);
@@ -124,7 +125,7 @@ public class stepDef_login {
       navfart_loginPage.passwordInputBox.sendKeys(password);
    }
 
-   @And("user clicks username dropdown menu on the upright")
+   @And("user clicks username profile menu on the upright")
    public void userClicksUsernameDropdownMenuOnTheUpright() {
       BrowserUtils.waitUntilInvisibiltyOf(navfart_homePage.loadingBar);
       navfart_homePage.usernameDropdown.click();
@@ -195,4 +196,15 @@ public class stepDef_login {
       System.out.println("actual = " + actual);
       Assert.assertEquals(expected,actual);
    }
+
+   @Then("user sees his-her username as {string} in the profile menu")
+   public void userSeesHisHerUsernameAsInTheProfileMenu(String nameIntheProfile) {
+      String expected=nameIntheProfile;
+      String actual=navfart_homePage.usernameDropdown.getText();
+      System.out.println(actual);
+      Assert.assertEquals(expected,actual);
+   }
+
+
+
 }

@@ -21,4 +21,9 @@ public class Navfart_HomePage {
 
     @FindBy(xpath = "//div[@class='bar']")
     public WebElement loadingBar;
+
+    public void logout(){
+        usernameDropdown.click();
+        logoutLink.click();
+    }
 }
